@@ -1,0 +1,18 @@
+syntax = "proto3";
+option go_package = ".;proto";
+package quotes;
+
+service Quotes {
+  rpc ListQuotes(ListQuotesRequest) returns (ListQuotesReply) {}
+  rpc AddQuote(QuoteData) returns (AddQuoteReply) {}
+}
+
+message QuoteData {
+  string quote = 1;
+  string author = 2;
+}
+
+message AddQuoteReply { QuoteData quote = 1; }
+
+message ListQuotesReply { repeated QuoteData quotes = 1; }
+message ListQuotesRequest {}
